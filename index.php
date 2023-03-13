@@ -3,12 +3,14 @@
 include_once(__DIR__. "/partials/functions.php");
     
     // Esempio di utilizzo per generare una password casuale di lunghezza 8
-//     if(isset($_GET["pass-length"])){
+    if(isset($_GET["pass-length"])){
         
-//         $password_length = $_GET["pass-length"];
-//         echo generateRandomPassword($password_length);
-//         var_dump($password_length); 
-// }
+        $password_length = $_GET["pass-length"];
+        session_start();
+        $_SESSION["prova"] = $password_length ;
+        header("Location: ./result.php");
+       
+}
 ?>
 
 
@@ -28,9 +30,9 @@ include_once(__DIR__. "/partials/functions.php");
 
 <body>
     <div class="container">
-        <h1 class="text-center text-primary">Generatore di password</h1>
+        <h1 class="text-center text-primary pt-5">Generatore di password</h1>
 
-        <form method="get" class="row g-3 py-5">
+        <form method="GET" class="row g-3 py-5">
             <div class="col-12">
                 <label for="pass-length" class="form-label"></label>
                 <input name="pass-length" type="number" class="form-control" id="pass-length"
@@ -42,8 +44,10 @@ include_once(__DIR__. "/partials/functions.php");
             </div>
         </form>
         <section>
-            <h2 class="text-secondary text-center">Ecco la tua password casuale</h2>
             <?php if (isset($_GET["pass-length"])) :?>
+            <h2 class="text-secondary text-center">Ecco la tua password casuale di
+                <?php echo $_GET["pass-length"] ?> caratteri
+            </h2>
             <p class="h1 text-center">
                 <?php
                 $password_length = $_GET["pass-length"];
