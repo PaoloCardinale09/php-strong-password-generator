@@ -7,7 +7,7 @@ include_once(__DIR__. "/partials/functions.php");
         
         $password_length = $_GET["pass-length"];
         session_start();
-        $_SESSION["prova"] = $password_length ;
+        $_SESSION["pass_length"] = $password_length ;
         header("Location: ./result.php");
        
 }

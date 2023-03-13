@@ -20,13 +20,13 @@ session_start();
 
 
     <section class="py-5">
-        <?php if (isset($_SESSION["prova"])) :?>
+        <?php if (isset($_SESSION["pass_length"])) :?>
         <h2 class="text-secondary text-center">Ecco la tua password casuale di
-            <?php echo $_SESSION["prova"] ?> caratteri
+            <?php echo $_SESSION["pass_length"] ?> caratteri
         </h2>
         <p class="h1 text-center">
             <?php
-                $password_length = $_SESSION["prova"];
+                $password_length = $_SESSION["pass_length"];
                 echo generateRandomPassword($password_length) ;
               ?>
         </p>
