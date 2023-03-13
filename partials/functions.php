@@ -12,6 +12,9 @@ function generateRandomPassword($length) {
   
     
     return $password;
-    
-    header("Location: ./result.php ");
+  
+ 
+
+        header("Location: ./result.php ");
+ 
 }

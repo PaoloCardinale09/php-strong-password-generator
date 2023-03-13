@@ -19,9 +19,9 @@ session_start();
 <body>
 
 
-    <section class="py-5">
+    <section class="py-5 container">
         <?php if (isset($_SESSION["pass_length"])) :?>
-        <h2 class="text-secondary text-center">Ecco la tua password casuale di
+        <h2 class="text-secondary text-center py-4">Ecco la tua password casuale di
             <?php echo $_SESSION["pass_length"] ?> caratteri
         </h2>
         <p class="h1 text-center">
@@ -32,6 +32,10 @@ session_start();
         </p>
 
         <?php endif; ?>
+        <div class="text-center py-4">
+
+            <a class="text-center" href="/php-strong-password-generator/">Torna indietro </a>
+        </div>
     </section>
 
 
