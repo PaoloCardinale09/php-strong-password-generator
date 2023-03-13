@@ -1,21 +1,25 @@
 <?php
 
-// $password_length = $_GET$["pass-length"];
 
 function generateRandomPassword($length = 10) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()_+~`|}{[]\:;?><,. /-=';
-
-    $password = '';
-    for ($i = 0; $i < $length; $i++) {
-        $index = rand(0, strlen($characters) - 1);
-        $password .= substr($characters, $index, 1);
+        
+        $password = '';
+        for ($i = 0; $i < $length; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $password .= substr($characters, $index, 1);
+        }
+        return $password;
     }
-    return $password;
+    
+    // Esempio di utilizzo per generare una password casuale di lunghezza 8
+    if(isset($_GET["pass-length"])){
+        
+        $password_length = $_GET["pass-length"];
+        echo generateRandomPassword($password_length);
+        var_dump($password_length); 
 }
-
-// Esempio di utilizzo per generare una password casuale di lunghezza 8
-// echo generateRandomPassword(11);
-var_dump($_GET[' pass-length']); ?>
+?>
 
 
     <!DOCTYPE html>
@@ -39,7 +43,7 @@ var_dump($_GET[' pass-length']); ?>
             <form method="get" class="row g-3 py-5">
                 <div class="col-12">
                     <label for="pass-length" class="form-label"></label>
-                    <input type="number" class="form-control" id="pass-length"
+                    <input name="pass-length" type="number" class="form-control" id="pass-length"
                         placeholder="Inserire la lunghezza della password da generare">
                 </div>
 
@@ -47,6 +51,12 @@ var_dump($_GET[' pass-length']); ?>
                     <button type="submit" class="btn btn-primary">GENERA</button>
                 </div>
             </form>
+            <section>
+                <h2 class="text-secondary text-center">Ecco la tua password casuale</h2>
+                <p class="h1 text-center">
+                    <?php echo generateRandomPassword($password_length) ?>
+                </p>
+            </section>
         </div>
 
     </body>
